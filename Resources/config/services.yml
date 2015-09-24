@@ -1,4 +1,15 @@
 services:
-#    flowcode_notification.example:
-#        class: Flowcode\NotificationBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    flowcode.sender.senderEmailLocal:
+        class:        Flowcode\NotificationBundle\Senders\EmailLocalSender
+        calls:
+            - [setContainer, ["@service_container"]]
+    flowcode.sender.senderEmailMandrill:
+        class:        Flowcode\NotificationBundle\Senders\EmailMandrillSender
+        calls:
+            - [setContainer, ["@service_container"]]
+
+    flowcode.notification.email:
+        class: Flowcode\NotificationBundle\Service\NotificationEmailService
+        calls:
+            - [setSender, ["@flowcode.sender.senderEmailMandrill"]]
+            - [setContainer, ["@service_container"]]
