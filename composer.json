@@ -1,0 +1,30 @@
+{
+    "name" : "flowcode/notificationbundle",
+    "description" : "This is a bundle for notifications for symfony",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Francisco Memoli",
+        "email" : "fmemoli@flowcode.com.ar"
+    }],
+    "keywords" : [
+        "notifications email,sms,push notifications "
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Flowcode\\NotificationBundle" : ""
+        }
+    },
+    "target-dir" : "Flowcode/NotificationBundle",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "1.0.0-dev"
+        }
+    }
+}
