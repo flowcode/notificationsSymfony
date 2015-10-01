@@ -72,7 +72,7 @@ class NotificationEmailService implements ContainerAwareInterface
                                             $notification->getFromEmail(),
                                             $notification->getFromName(),
                                             $notification->getSubject(),
-                                            $notification->getBody());
+                                            $notification->getBody(),$notification->getIsHTML());
                 $notification->setStatus(EmailNotification::$STATUS_SENDED);
             }
             $this->flushAndClear();
