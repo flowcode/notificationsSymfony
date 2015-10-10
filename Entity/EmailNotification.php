@@ -4,12 +4,6 @@ namespace Flowcode\NotificationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * EmailNotification
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Flowcode\NotificationBundle\Repository\EmailNotificationRepository")
- */
 class EmailNotification
 {
     public static $STATUS_PENDING = 0;
