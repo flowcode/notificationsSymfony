@@ -16,56 +16,56 @@ class EmailNotification
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="toEmail", type="string", length=255)
      */
-    private $toEmail;
+    protected $toEmail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="toName", type="string", length=255)
      */
-    private $toName;
+    protected $toName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fromEmail", type="string", length=255)
      */
-    private $fromEmail;
+    protected $fromEmail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fromName", type="string", length=255)
      */
-    private $fromName;
+    protected $fromName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="body", type="text")
      */
-    private $body;
+    protected $body;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="isHTML", type="boolean")
      */
-    private $isHTML;
+    protected $isHTML;
 
     /**
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=255)
      */
-    private $subject;
+    protected $subject;
 
 
     /**
@@ -73,7 +73,7 @@ class EmailNotification
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    protected $status;
     /**
      * Get id
      *

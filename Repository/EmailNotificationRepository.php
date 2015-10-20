@@ -3,7 +3,7 @@
 namespace Flowcode\NotificationBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Flowcode\NotificationBundle\Entity\EmailNotification;
+use Flower\ModelBundle\Entity\EmailNotification;
 /**
  * EmailNotificationRepository
  *

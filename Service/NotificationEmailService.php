@@ -5,7 +5,7 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Flowcode\NotificationBundle\Senders\EmailSenderInterface;
-use Flowcode\NotificationBundle\Entity\EmailNotification;
+use Flower\ModelBundle\Entity\EmailNotification;
 /**
  * Description of NotificationEmailService
  *
@@ -57,13 +57,13 @@ class NotificationEmailService implements ContainerAwareInterface
     public function run(){
         $em = $this->em;
         $batch = 100;
-        $this->entityNameNotification = $em->getClassMetadata("FlowcodeNotificationBundle:EmailNotification")->getName();
-        $countNotifications = $em->getRepository('FlowcodeNotificationBundle:EmailNotification')->countAllPendingNotifications();
+        $this->entityNameNotification = $em->getClassMetadata("FlowcodeModelBundle:EmailNotification")->getName();
+        $countNotifications = $em->getRepository('FlowcodeModelBundle:EmailNotification')->countAllPendingNotifications();
         $pages = ceil($countNotifications/$batch);
         $this->disableLogging();
         for ($i=0; $i < ($pages); $i++) { 
             $offset =($i*$batch);//not necessary for now.
-            $notifications = $em->getRepository('FlowcodeNotificationBundle:EmailNotification')->getAllPendingNotifications($batch,0);
+            $notifications = $em->getRepository('FlowcodeModelBundle:EmailNotification')->getAllPendingNotifications($batch,0);
             foreach ($notifications as $notification) {
                 $this->logger = $this->container->get("logger");
                 $this->logger->info("sending " ."ToEmail".$notification->getToEmail()."ToName".$notification->getToName()."FromEmail".$notification->getFromEmail()."FromName".$notification->getFromName()."Subject".$notification->getSubject()."Body".$notification->getBody(). " rows.");
