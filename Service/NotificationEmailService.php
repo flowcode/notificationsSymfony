@@ -57,13 +57,13 @@ class NotificationEmailService implements ContainerAwareInterface
     public function run(){
         $em = $this->em;
         $batch = 100;
-        $this->entityNameNotification = $em->getClassMetadata("FlowcodeModelBundle:EmailNotification")->getName();
-        $countNotifications = $em->getRepository('FlowcodeModelBundle:EmailNotification')->countAllPendingNotifications();
+        $this->entityNameNotification = $em->getClassMetadata($this->container->getParameter("flowcode.notification.email.entity"))->getName();
+        $countNotifications = $em->getRepository($this->container->getParameter("flowcode.notification.email.entity"))->countAllPendingNotifications();
         $pages = ceil($countNotifications/$batch);
         $this->disableLogging();
         for ($i=0; $i < ($pages); $i++) { 
             $offset =($i*$batch);//not necessary for now.
-            $notifications = $em->getRepository('FlowcodeModelBundle:EmailNotification')->getAllPendingNotifications($batch,0);
+            $notifications = $em->getRepository($this->container->getParameter("flowcode.notification.email.entity"))->getAllPendingNotifications($batch,0);
             foreach ($notifications as $notification) {
                 $this->logger = $this->container->get("logger");
                 $this->logger->info("sending " ."ToEmail".$notification->getToEmail()."ToName".$notification->getToName()."FromEmail".$notification->getFromEmail()."FromName".$notification->getFromName()."Subject".$notification->getSubject()."Body".$notification->getBody(). " rows.");
