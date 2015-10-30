@@ -3,6 +3,12 @@ services:
         class:        Flowcode\NotificationBundle\Senders\EmailLocalSender
         calls:
             - [setContainer, ["@service_container"]]
+
+    flowcode.sender.senderEmailMailgun:
+        class:        Flowcode\NotificationBundle\Senders\EmailMailgunSender
+        calls:
+            - [setContainer, ["@service_container"]]
+
     flowcode.sender.senderEmailMandrill:
         class:        Flowcode\NotificationBundle\Senders\EmailMandrillSender
         calls:

@@ -13,7 +13,8 @@
         "MIT"
     ],
     "require" : {
-        "hipaway-travel/mandrill-bundle": "^1.0"
+        "hipaway-travel/mandrill-bundle": "^1.0",
+        "mailgun/mailgun-php": "~1.7.2"
     },
     "autoload" : {
         "psr-0" : {
