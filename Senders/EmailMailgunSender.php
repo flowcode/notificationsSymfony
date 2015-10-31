@@ -31,16 +31,16 @@ class EmailMailgunSender implements  EmailSenderInterface
             'subject' => $subject
         );
         if ($isHTML) {
-            $message['text'] = $body;
-        } else {
             $message['html'] = $body;
+        } else {
+            $message['text'] = $body;
         }
 
         # Make the call to the client.
-        $result = $mgClient->sendMessage($domain, $message);
-
-        if ($result["id"]) {
-            return new EmailSenderResponse(true, EmailSenderResponse::status_sent, $result["id"]);
+        $resultRaw = $mgClient->sendMessage($domain, $message);
+        $result = $resultRaw->http_response_body;
+        if ($result->id) {
+            return new EmailSenderResponse(true, EmailSenderResponse::status_sent, $result->id);
         } else {
             return new EmailSenderResponse(false, EmailSenderResponse::status_error);
         }

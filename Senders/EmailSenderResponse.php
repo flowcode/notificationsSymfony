@@ -24,14 +24,14 @@ class EmailSenderResponse
     protected $status;
 
     /**
-     * Send sucess.
+     * Send success.
      * @var boolean
      */
-    protected $sucess;
+    protected $success;
 
-    public function __construct($sucess = true, $status = self::status_sent, $id = null)
+    public function __construct($success = true, $status = self::status_sent, $id = null)
     {
-        $this->sucess = $success;
+        $this->success = $success;
         $this->status = $status;
         $this->id = $id;
     }
