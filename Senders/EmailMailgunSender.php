@@ -30,6 +30,9 @@ class EmailMailgunSender implements  EmailSenderInterface
             'to'      => $toName . ' <'.$toEmail .'>',
             'subject' => $subject
         );
+        if(strlen($fromName) == 0){
+            $message['from'] = $fromEmail;
+        }
         if ($isHTML) {
             $message['html'] = $body;
         } else {
