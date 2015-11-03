@@ -6,12 +6,8 @@
         "name" : "Francisco Memoli",
         "email" : "fmemoli@flowcode.com.ar"
     }],
-    "keywords" : [
-        "notifications email,sms,push notifications "
-    ],
-    "license" : [
-        "MIT"
-    ],
+    "keywords" : ["notifications"],
+    "license" : "MIT",
     "require" : {
         "hipaway-travel/mandrill-bundle": "^1.0",
         "mailgun/mailgun-php": "~1.7.2"
