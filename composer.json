@@ -9,8 +9,8 @@
     "keywords" : ["notifications"],
     "license" : "MIT",
     "require" : {
-        "hipaway-travel/mandrill-bundle": "^1.0",
-        "mailgun/mailgun-php": "~1.7.2"
+        "mailgun/mailgun-php": "~1.7.2",
+        "slot/mandrill-bundle": "^1.1"
     },
     "autoload" : {
         "psr-0" : {
@@ -18,8 +18,6 @@
         }
     },
     "target-dir" : "Flowcode/NotificationBundle",
-    "repositories" : [{
-    }],
     "extra" : {
     "branch-alias" : {
             "dev-master" : "1.0.0-dev"

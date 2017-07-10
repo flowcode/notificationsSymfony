@@ -1,14 +1,15 @@
 <?php
 namespace Flowcode\NotificationBundle\Senders;
 
-use Hip\MandrillBundle\Message;
+use Slot\MandrillBundle\Message;
+use Slot\MandrillBundle\Dispatcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Flowcode\NotificationBundle\Senders\EmailSenderResponse;
 
 /**
  * @author Francisco Memoli <fmemoli@flowcode.com.ar>
  */
-class EmailMandrillSender implements  EmailSenderInterface
+class EmailMandrillSender implements EmailSenderInterface
 {
     /**
      * @param ContainerInterface $container
@@ -20,7 +21,7 @@ class EmailMandrillSender implements  EmailSenderInterface
 
     public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false)
     {
-        $dispatcher = $this->container->get('hip_mandrill.dispatcher');
+        $dispatcher = $this->container->get('slot_mandrill.dispatcher');
         $message = new Message();
         $message->setFromEmail($fromEmail)
                             ->setFromName($fromName)
