@@ -10,7 +10,7 @@
     "license" : "MIT",
     "require" : {
         "mailgun/mailgun-php": "~1.7.2",
-        "slot/mandrill-bundle": "^1.1"
+        "slot/mandrill-bundle": "1.*"
     },
     "autoload" : {
         "psr-0" : {
