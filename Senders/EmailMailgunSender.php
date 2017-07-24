@@ -1,4 +1,5 @@
 <?php
+
 namespace Flowcode\NotificationBundle\Senders;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -8,8 +9,9 @@ use Mailgun\Mailgun;
 /**
  * @author Juan Manuerl Aguero <jaguero@flowcode.com.ar>
  */
-class EmailMailgunSender implements  EmailSenderInterface
+class EmailMailgunSender implements EmailSenderInterface
 {
+
     /**
      * @param ContainerInterface $container
      */
@@ -18,7 +20,7 @@ class EmailMailgunSender implements  EmailSenderInterface
         $this->container = $container;
     }
 
-    public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false)
+    public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false, $attachmentPath = null)
     {
         $mailgunApiKey = $this->container->getParameter('mailgun_api_key');
         $mailgunDomain = $this->container->getParameter('mailgun_domain');
@@ -26,11 +28,11 @@ class EmailMailgunSender implements  EmailSenderInterface
         $domain = $mailgunDomain;
 
         $message = array(
-            'from'    => $fromName . ' <'.$fromEmail.'>',
-            'to'      => $toName . ' <'.$toEmail .'>',
+            'from' => $fromName . ' <' . $fromEmail . '>',
+            'to' => $toName . ' <' . $toEmail . '>',
             'subject' => $subject
         );
-        if(strlen($fromName) == 0){
+        if (strlen($fromName) == 0) {
             $message['from'] = $fromEmail;
         }
         if ($isHTML) {
@@ -48,4 +50,5 @@ class EmailMailgunSender implements  EmailSenderInterface
             return new EmailSenderResponse(false, EmailSenderResponse::status_error);
         }
     }
+
 }

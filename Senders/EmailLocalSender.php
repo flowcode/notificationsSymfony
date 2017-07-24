@@ -18,8 +18,7 @@ class EmailLocalSender implements  EmailSenderInterface
         $this->container = $container;
     }
 
-    public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false)
-    {
+    public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false, $attachmentPath = null){
         $message = Swift_Message::newInstance()
                 ->setSubject($subject)
                 ->setFrom(array($fromEmail => $fromName))
