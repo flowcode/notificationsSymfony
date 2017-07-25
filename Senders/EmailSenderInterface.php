@@ -7,7 +7,8 @@ use Flowcode\NotificationBundle\Senders\EmailSenderResponse;
 /**
  * @author Francisco Memoli <fmemoli@flowcode.com.ar>
  */
-interface EmailSenderInterface {
+interface EmailSenderInterface
+{
 
     /**
      * The method send an email.
@@ -24,4 +25,8 @@ interface EmailSenderInterface {
      * @return EmailSenderResponse response.
      */
     public function send($toEmail, $toName, $fromEmail, $fromName, $subject, $body, $isHTML = false, $attachmentPath = null);
+
+    public function sendTemplate($toEmail, $toName, $fromEmail, $fromName, $subject, $templateName, $templateVars = array(), $attachmentPath = null);
+
+    public function sendTemplateMultipleRecipients($recipients, $fromEmail, $fromName, $subject, $templateName, $templateVars = array());
 }

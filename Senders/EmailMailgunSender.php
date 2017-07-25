@@ -51,4 +51,14 @@ class EmailMailgunSender implements EmailSenderInterface
         }
     }
 
+    public function sendTemplate($toEmail, $toName, $fromEmail, $fromName, $subject, $templateName, $templateVars = array(), $attachmentPath = null)
+    {
+        
+    }
+
+    public function sendTemplateMultipleRecipients($recipients, $fromEmail, $fromName, $subject, $templateName, $templateVars = array())
+    {
+        
+    }
+
 }
