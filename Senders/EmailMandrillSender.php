@@ -75,8 +75,17 @@ class EmailMandrillSender implements EmailSenderInterface
                 break;
         }
     }
-
-    public function sendTemplateMultipleRecipients($recipients, $fromEmail, $fromName, $subject, $templateName, $templateVars = array())
+    /**
+     * [sendTemplateMultipleRecipients description]
+     * @param  Collection $recipients   collection of Flowcode\NotificationBundle\Entity\Recipient
+     * @param  String       $fromEmail    Email from
+     * @param  String       $fromName     Name  from
+     * @param  String       $subject      [description]
+     * @param  Collection   $templateName [description]
+     * @param  Collection   $templateGlobalVars [description]
+     * @return [type]               [description]
+     */
+    public function sendTemplateMultipleRecipients($recipients, $fromEmail, $fromName, $subject, $templateName, $templateGlobalVars = array())
     {
         $dispatcher = $this->container->get('slot_mandrill.dispatcher');
         $message = new Message();
@@ -84,14 +93,13 @@ class EmailMandrillSender implements EmailSenderInterface
                 ->setFromName($fromName)
                 ->setSubject($subject);
         foreach ($recipients as $recipient) {
-            $message->addTo($recipient['email'], $recipient['name']);
-        }
-        foreach ($templateVars as $var) {
-            if ($var['global']) {
-                $message->addGlobalMergeVar($var['name'], $var['content']);
-            } else {
-                $message->addMergeVar($var['recipient'], $var['name'], $var['content']);
+            $message->addTo($recipient->getEmail(), $recipient->getName());
+            foreach ($recipient->getVariables() as $key => $value) {
+                $message->addMergeVar($recipient->getEmail(), $key, $value);
             }
+        }
+        foreach ($templateGlobalVars as $var) {
+                $message->addGlobalMergeVar($var['name'], $var['content']);
         }
         $result = $dispatcher->send($message, $templateName);
 
