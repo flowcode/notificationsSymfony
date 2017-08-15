@@ -94,9 +94,7 @@ class EmailMandrillSender implements EmailSenderInterface
                 ->setSubject($subject);
         foreach ($recipients as $recipient) {
             $message->addTo($recipient->getEmail(), $recipient->getName());
-            foreach ($recipient->getVariables() as $key => $value) {
-                $message->addMergeVar($recipient->getEmail(), $key, $value);
-            }
+            $message->addMergeVars($recipient->getEmail(), $recipient->getVariables());
         }
         foreach ($templateGlobalVars as $var) {
                 $message->addGlobalMergeVar($var['name'], $var['content']);
@@ -112,5 +110,4 @@ class EmailMandrillSender implements EmailSenderInterface
                 break;
         }
     }
-
 }

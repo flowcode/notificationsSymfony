@@ -47,20 +47,27 @@ class Recipient
         return $this;
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->variables = new ArrayCollection();
     }
 
-    function getVariables() {
+    public function getVariables()
+    {
         return $this->variables;
     }
 
-    function setVariables($variables) {
+    public function setVariables($variables)
+    {
         $this->variables = $variables;
     }
-
-    function addVariable($variable) {
-        $this->variables->add($variable);
+    public function setVariable($key, $value)
+    {
+        $this->variables->set($key, $value);
     }
 
+    public function addVariable($variable)
+    {
+        $this->variables->add($variable);
+    }
 }
